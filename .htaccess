@@ -1,0 +1,35 @@
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^localhost/real-estate/[nc]
+RewriteRule ^(.*)$ http://www.localhost/real-estate//$1 [r=301,nc]
+
+
+<FilesMatch "\.(jpg|css|js)$">
+Header set Cache-Control "public, max-age=0"
+</FilesMatch>
+
+
+ErrorDocument 400 http://localhost/real-estate/400.php
+
+ErrorDocument 401 http://localhost/real-estate//401.php
+
+
+ErrorDocument 403 http://localhost/real-estate/403.php
+
+ErrorDocument 404 http://localhost/real-estate/404.php
+
+
+ErrorDocument 500 http://localhost/real-estate/500.php
+
+
+DirectoryIndex index.php
+
+
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
+
+Options All -Indexes
+ 
