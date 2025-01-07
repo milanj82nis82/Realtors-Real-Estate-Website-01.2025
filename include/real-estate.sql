@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2025 at 09:29 PM
+-- Generation Time: Jan 07, 2025 at 11:41 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -26,10 +26,6 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `admins`
 --
---
--- Table structure for table `forums`
---
-
 
 CREATE TABLE `admins` (
   `id` int(11) NOT NULL,
@@ -746,6 +742,52 @@ INSERT INTO `clients` (`id`, `first_name`, `last_name`, `email`, `phone`, `passw
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `forums`
+--
+
+CREATE TABLE `forums` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `admin_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `forums`
+--
+
+INSERT INTO `forums` (`id`, `name`, `description`, `created_at`, `updated_at`, `admin_id`) VALUES
+(1, 'General Discussion', 'Talk about anything and everything.', '2025-01-01 00:00:00', '2025-01-01 00:00:00', NULL),
+(2, 'Real Estate Tips', 'Share and discuss real estate tips and advice.', '2025-01-01 00:00:00', '2025-01-01 00:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL,
+  `thread_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `content` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `thread_id`, `user_id`, `content`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'Hello everyone! Welcome to the forum.', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
+(2, 2, 2, 'When buying a home, always get a home inspection.', '2025-01-01 00:00:00', '2025-01-01 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `properties`
 --
 
@@ -999,6 +1041,59 @@ INSERT INTO `property_images` (`id`, `property_id`, `image_url`, `created_at`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `testimonials`
+--
+
+CREATE TABLE `testimonials` (
+  `id` int(11) NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `property_id` int(11) NOT NULL,
+  `rating` int(11) NOT NULL CHECK (`rating` between 1 and 5),
+  `comment` text DEFAULT NULL,
+  `image_url` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `testimonials`
+--
+
+INSERT INTO `testimonials` (`id`, `client_id`, `property_id`, `rating`, `comment`, `image_url`, `created_at`, `updated_at`) VALUES
+(1, 229, 91, 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mihi enim satis est, ipsis non satis. Consequens enim est et post oritur, ut dixi. Semper enim ex eo, quod maximas partes continet latissimeque funditur.', 'http://localhost/real-estate/images/person_1.jpg', '2025-01-07 22:40:01', '2025-01-07 22:40:01'),
+(2, 12, 2, 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mihi enim satis est, ipsis non satis. Consequens enim est et post oritur, ut dixi. Semper enim ex eo, quod maximas partes continet latissimeque funditur.', 'http://localhost/real-estate/images/person_1.jpg', '2025-01-07 22:40:01', '2025-01-07 22:40:01'),
+(3, 44, 2, 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mihi enim satis est, ipsis non satis. Consequens enim est et post oritur, ut dixi. Semper enim ex eo, quod maximas partes continet latissimeque funditur.', 'http://localhost/real-estate/images/person_1.jpg', '2025-01-07 22:40:01', '2025-01-07 22:40:01'),
+(4, 82, 3, 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mihi enim satis est, ipsis non satis. Consequens enim est et post oritur, ut dixi. Semper enim ex eo, quod maximas partes continet latissimeque funditur.', 'http://localhost/real-estate/images/person_1.jpg', '2025-01-07 22:40:01', '2025-01-07 22:40:01'),
+(5, 122, 1, 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mihi enim satis est, ipsis non satis. Consequens enim est et post oritur, ut dixi. Semper enim ex eo, quod maximas partes continet latissimeque funditur.', 'http://localhost/real-estate/images/person_1.jpg', '2025-01-07 22:40:01', '2025-01-07 22:40:01'),
+(6, 75, 5, 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mihi enim satis est, ipsis non satis. Consequens enim est et post oritur, ut dixi. Semper enim ex eo, quod maximas partes continet latissimeque funditur.', 'http://localhost/real-estate/images/person_1.jpg', '2025-01-07 22:40:01', '2025-01-07 22:40:01'),
+(7, 32, 14, 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mihi enim satis est, ipsis non satis. Consequens enim est et post oritur, ut dixi. Semper enim ex eo, quod maximas partes continet latissimeque funditur.', 'http://localhost/real-estate/images/person_1.jpg', '2025-01-07 22:40:01', '2025-01-07 22:40:01'),
+(8, 12, 21, 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mihi enim satis est, ipsis non satis. Consequens enim est et post oritur, ut dixi. Semper enim ex eo, quod maximas partes continet latissimeque funditur.', 'http://localhost/real-estate/images/person_1.jpg', '2025-01-07 22:40:01', '2025-01-07 22:40:01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `threads`
+--
+
+CREATE TABLE `threads` (
+  `id` int(11) NOT NULL,
+  `forum_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `threads`
+--
+
+INSERT INTO `threads` (`id`, `forum_id`, `title`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Welcome to the forum!', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
+(2, 2, 'Best practices for buying a home', '2025-01-01 00:00:00', '2025-01-01 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `transactions`
 --
 
@@ -1085,6 +1180,12 @@ ALTER TABLE `clients`
   ADD UNIQUE KEY `slug` (`slug`);
 
 --
+-- Indexes for table `forums`
+--
+ALTER TABLE `forums`
+  ADD KEY `forums_ibfk_1` (`admin_id`);
+
+--
 -- Indexes for table `properties`
 --
 ALTER TABLE `properties`
@@ -1096,6 +1197,14 @@ ALTER TABLE `properties`
 --
 ALTER TABLE `property_images`
   ADD PRIMARY KEY (`id`),
+  ADD KEY `property_id` (`property_id`);
+
+--
+-- Indexes for table `testimonials`
+--
+ALTER TABLE `testimonials`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `client_id` (`client_id`),
   ADD KEY `property_id` (`property_id`);
 
 --
@@ -1160,6 +1269,12 @@ ALTER TABLE `property_images`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
+-- AUTO_INCREMENT for table `testimonials`
+--
+ALTER TABLE `testimonials`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
@@ -1170,10 +1285,23 @@ ALTER TABLE `transactions`
 --
 
 --
+-- Constraints for table `forums`
+--
+ALTER TABLE `forums`
+  ADD CONSTRAINT `forums_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`id`);
+
+--
 -- Constraints for table `property_images`
 --
 ALTER TABLE `property_images`
   ADD CONSTRAINT `property_images_ibfk_1` FOREIGN KEY (`property_id`) REFERENCES `properties` (`id`);
+
+--
+-- Constraints for table `testimonials`
+--
+ALTER TABLE `testimonials`
+  ADD CONSTRAINT `testimonials_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`),
+  ADD CONSTRAINT `testimonials_ibfk_2` FOREIGN KEY (`property_id`) REFERENCES `properties` (`id`);
 
 --
 -- Constraints for table `transactions`
@@ -1187,68 +1315,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-CREATE TABLE `forums` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Table structure for table `threads`
---
-
-CREATE TABLE `threads` (
-  `id` int(11) NOT NULL,
-  `forum_id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Table structure for table `posts`
---
-
-CREATE TABLE `posts` (
-  `id` int(11) NOT NULL,
-  `thread_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `content` text NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
-
---
--- Dumping data for table `forums`
---
-
-INSERT INTO `forums` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'General Discussion', 'Talk about anything and everything.', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
-(2, 'Real Estate Tips', 'Share and discuss real estate tips and advice.', '2025-01-01 00:00:00', '2025-01-01 00:00:00');
-
---
--- Dumping data for table `threads`
---
-
-INSERT INTO `threads` (`id`, `forum_id`, `title`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Welcome to the forum!', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
-(2, 2, 'Best practices for buying a home', '2025-01-01 00:00:00', '2025-01-01 00:00:00');
-
---
--- Dumping data for table `posts`
---
-
-INSERT INTO `posts` (`id`, `thread_id`, `user_id`, `content`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'Hello everyone! Welcome to the forum.', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
-(2, 2, 2, 'When buying a home, always get a home inspection.', '2025-01-01 00:00:00', '2025-01-01 00:00:00');
-
-ALTER TABLE `forums`
-ADD COLUMN `admin_id` int(11) DEFAULT NULL,
-ADD CONSTRAINT `forums_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`id`);
-
-
