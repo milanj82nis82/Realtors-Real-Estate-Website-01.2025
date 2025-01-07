@@ -23,6 +23,7 @@
           <li><a href="property.php" class="nav-link">Property</a></li>
           <li><a href="about.php" class="nav-link">About</a></li>
           <li><a href="blog.php" class="nav-link">Blog</a></li>
+          <li><a href="forum.php" class="nav-link">Forum</a></li>
           <li><a href="contact.php" class="nav-link">Contact</a></li>
 
 <?php

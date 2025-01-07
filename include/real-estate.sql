@@ -26,6 +26,10 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `admins`
 --
+--
+-- Table structure for table `forums`
+--
+
 
 CREATE TABLE `admins` (
   `id` int(11) NOT NULL,
@@ -1183,3 +1187,68 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+CREATE TABLE `forums` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `threads`
+--
+
+CREATE TABLE `threads` (
+  `id` int(11) NOT NULL,
+  `forum_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL,
+  `thread_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `content` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+--
+-- Dumping data for table `forums`
+--
+
+INSERT INTO `forums` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'General Discussion', 'Talk about anything and everything.', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
+(2, 'Real Estate Tips', 'Share and discuss real estate tips and advice.', '2025-01-01 00:00:00', '2025-01-01 00:00:00');
+
+--
+-- Dumping data for table `threads`
+--
+
+INSERT INTO `threads` (`id`, `forum_id`, `title`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Welcome to the forum!', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
+(2, 2, 'Best practices for buying a home', '2025-01-01 00:00:00', '2025-01-01 00:00:00');
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `thread_id`, `user_id`, `content`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'Hello everyone! Welcome to the forum.', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
+(2, 2, 2, 'When buying a home, always get a home inspection.', '2025-01-01 00:00:00', '2025-01-01 00:00:00');
+
+ALTER TABLE `forums`
+ADD COLUMN `admin_id` int(11) DEFAULT NULL,
+ADD CONSTRAINT `forums_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`id`);
+
+
