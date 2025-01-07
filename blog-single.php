@@ -1,6 +1,7 @@
 <?php require_once 'include/config.inc.php' ?>
 <?php require_once 'include/db.inc.php' ?>
-<?php require_once 'include/class_autoloader.inc.php' ?>
+<?php require_once 'include/class_autoloader.inc.php';?>
+
 <!doctype html>
 <html lang="en">
 
@@ -46,110 +47,15 @@
   <?php  require_once 'partials/__cover_image_top.inc.php'?>
     
 
+<?php  require_once 'partials/__advanced_search.inc.php' ?>
 
+<?php  require_once 'partials/__about_us.inc.php'?>
 
-
-
-
-
-<div class="site-section bg-light">
-      <div class="container">
-<div class="row">
-  <div class="col-md-12">
-    <h2 class="text-center">Welcome to our blog</h2>
-  </div>
-</div>
-<br><br>
-
-        <div class="row">
-          
-<?php
-
-try {
-
-$blog = new Blog();
-$admin = new Admin();
-$user = new User();
-foreach ( $blog -> getAllBlogPosts()['posts'] as $postSingle ) {
-  
-  ?>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="post-entry-1 h-100">
-              <a href="blog-single.php?slug=<?php echo $postSingle['slug']  ?>">
-                <img src="images/img_1.jpg" alt="Image"
-                 class="img-fluid">
-              </a>
-              <div class="post-entry-1-contents">
-                
-                <h2><a href="blog-single.php?slug=<?php echo $postSingle['slug']  ?>"><?php echo $postSingle['title']  ?></a></h2>
-                <span class="meta d-inline-block mb-3"><?php echo $postSingle['created_at']  ?> 
-                <span class="mx-2">by</span> <a href="#"><?php echo $admin -> getAdminDetailsById($postSingle['admin_id'])['first_name'] .' 
-                '.  $admin -> getAdminDetailsById($postSingle['admin_id'])['last_name']  ?></a></span>
-                <p><?php echo substr( $postSingle['excerpt'], 0 , 200 )  ?>...</p>
-              </div>
-            </div>
-          </div>
-         
-
-<?php
-}// end foreach
-
-
-
-
-} catch ( PDOException $e ){
-  echo $e -> getMessage();
-}
-
-
-?>
-
-<div class="col-12 mt-5 text-center pagination-39291">
-<?php  
-
-try {
-
-$pages = $blog -> getAllBlogPosts()['pages'];
-
-for ( $x =1 ; $x <= $pages ; $x++ ){
-    $perPage = $blog -> getAllBlogPosts()['per-page'];
-?>
-  
-    <a  href="blog.php?page=<?php echo $x ?>&per-page=<?php echo $perPage ?>"><?php echo $x ; ?> </a>
-<?php
-
-}
-
-
-} catch ( PDOException $e ){
-    echo $e -> getMessage();
-}
-
-
-?>
-
-         
-          
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
+<?php require_once 'partials/__latest_properties.inc.php' ?>
+<?php require_once 'partials/__agents.inc.php'  ?>
 <?php require_once 'partials/__testemonials.inc.php' ?> 
 
-
-
+<?php require_once 'partials/__blog_posts_home.inc.php' ?>
 
 <?php require_once 'partials/__footer.inc.php' ?>
     </div>

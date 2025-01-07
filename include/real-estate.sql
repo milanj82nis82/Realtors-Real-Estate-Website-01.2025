@@ -26,6 +26,29 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `admins`
 --
+-- 
+--
+-- Table structure for table `banners`
+--
+
+CREATE TABLE `banners` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `image_url` varchar(255) NOT NULL,
+  `link_url` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `is_active` tinyint(1) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `banners`
+--
+
+INSERT INTO `banners` (`id`, `title`, `image_url`, `link_url`, `created_at`, `updated_at`, `is_active`) VALUES
+(1, 'Summer Sale', 'http://example.com/images/summer-sale.jpg', 'http://example.com/summer-sale', '2023-06-01 12:00:00', '2023-06-01 12:00:00', 1),
+(2, 'Winter Collection', 'http://example.com/images/winter-collection.jpg', 'http://example.com/winter-collection', '2023-12-01 12:00:00', '2023-12-01 12:00:00', 1);
+
 
 CREATE TABLE `admins` (
   `id` int(11) NOT NULL,
@@ -235,6 +258,8 @@ CREATE TABLE `blogs` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
+  `excerpt` text  NULL,
+  
   `category_id` int(11) DEFAULT NULL,
   `admin_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
