@@ -17,7 +17,8 @@ $property = new Property();
     ?>
 
 <div class="testimonial-38920 d-flex align-items-start">
-            <div class="pic mr-4"><img src="<?php echo $testemonialSingle['image_url'];  ?>" alt=""></div>
+            <div class="pic mr-4"><img src="<?php echo $testemonialSingle['image_url'];  ?>" 
+            alt="<?php echo $property -> getPropertyDetailsById($testemonialSingle['property_id'])['name']; ?>"></div>
             <div>
               <span class="meta">
       
@@ -29,11 +30,33 @@ $property = new Property();
               <p> <?php echo $testemonialSingle['comment'];  ?></p>
               <div class="mt-4">
 
+<?php
 
-                <span class="icon-star text-white"></span>
-                <span class="icon-star text-white"></span>
-                <span class="icon-star text-white"></span>
-                <span class="icon-star text-white"></span>
+if( $testemonialSingle['rating'] == 1 ){
+  echo '<span class="icon-star text-warning"></span>';
+} else if( $testemonialSingle['rating'] == 2 ){
+  echo '<span class="icon-star text-warning"></span>
+  <span class="icon-star text-warning"></span>';
+} else if( $testemonialSingle['rating'] == 3 ){
+  echo '<span class="icon-star text-warning"></span>
+  <span class="icon-star text-warning"></span>
+  <span class="icon-star text-warning"></span>';
+} else if( $testemonialSingle['rating'] == 4 ){
+  echo '<span class="icon-star text-warning"></span>
+  <span class="icon-star text-warning"></span>
+  <span class="icon-star text-warning"></span>
+  <span class="icon-star text-warning"></span>';
+} else if( $testemonialSingle['rating'] == 5 ){
+  echo '<span class="icon-star text-warning"></span>
+  <span class="icon-star text-warning"></span>
+  <span class="icon-star text-warning"></span>
+  <span class="icon-star text-warning"></span>
+  <span class="icon-star text-warning"></span>';
+}
+
+?>
+    
+           
               </div>
             </div>
           </div>

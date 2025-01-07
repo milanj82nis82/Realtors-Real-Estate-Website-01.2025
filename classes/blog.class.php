@@ -28,10 +28,18 @@ class Blog extends DbConnect {
        return array( 'posts' => $posts , 'pages' => $pages , 'per-page' => $perPage);
 
 
-       return $posts;
+    }// getAllBlogPosts
 
+    public function getCarouselBlogPosts(){
 
-    }
+        $sql = 'select * from blogs order by created_at desc limit 6';
+        $query = $this -> connect() -> query($sql);
+        $result = $query -> fetchAll();
+        return $result;
+        
+       
+
+    } // getCaraouselBlogPosts
 
 
 
