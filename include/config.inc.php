@@ -9,3 +9,6 @@ define ( 'DBNAME'  , 'real-estate' ); //  Database Names
 define ( 'USERNAME'  , 'root' ); // Username
 define ( 'PASSWORD'  , '' ); // Password
 
+
+/*      SERVER CONFIGURATION 
+____________________________     */
