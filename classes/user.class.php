@@ -2,6 +2,21 @@
 
 class User extends DbConnect {
 
+   public function getUserDetails($id){
+
+    $sql = 'select * from clients where id = :id';
+    $query = $this -> connect() -> prepare($sql);   
+    $query -> bindParam(':id', $id, PDO::PARAM_INT);
+    $query -> execute();        
+    $user = $query -> fetch();
+    return $user;   
+
+
+   }// getUserDetails
+
+
+
+
    
 public function checkLoginStatus(){
 
