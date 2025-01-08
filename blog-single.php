@@ -94,7 +94,8 @@ try{
  
 </div>
 
-         
+         <hr>
+         <?php require_once 'include/facebook_share.inc.php' ?>
 
             <div class="pt-5">
               <p>Category:  <a href="#">
