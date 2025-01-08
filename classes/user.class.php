@@ -14,9 +14,6 @@ class User extends DbConnect {
 
    }// getUserDetails
 
-
-
-
    
 public function checkLoginStatus(){
 

@@ -12,3 +12,5 @@ define ( 'PASSWORD'  , '' ); // Password
 
 /*      SERVER CONFIGURATION 
 ____________________________     */
+
+define ( 'SITE_NAME'  , 'Real Estate' ); // Site Name
