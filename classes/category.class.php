@@ -23,8 +23,21 @@ Class Category extends DbConnect {
     }// getBlogCountInCategory
 
 
+public function getCategoryDetails($slug) {
+    $sql = 'SELECT * FROM categories WHERE slug = ?';
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$slug]);
+    $result = $stmt->fetch();
+    return $result;
 
 }// Category
 
+public function getBlogCategoryDetailsById($id) {
+    $sql = 'SELECT * FROM categories WHERE id = ?';
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$id]);
+    $result = $stmt->fetch();
+    return $result;
+}
 
-
+}// Category

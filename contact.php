@@ -58,30 +58,62 @@
       </div>
         <div class="row">
           <div class="col-lg-8 mb-5" >
-            <form action="#" method="post">
+
+<?php
+
+try {
+
+if( isset($_POST['sendContactEmail'])){
+
+
+
+  $first_name = $_POST['first_name'];
+  $last_name = $_POST['last_name'];
+  $emailAddress = $_POST['email'];
+  $message = $_POST['message'];
+
+  $email = new Email();
+  $email -> sendContactEmail($first_name, $last_name, $emailAddress, $message);
+
+
+
+
+}// main if
+
+
+
+
+} catch ( PDOException $e ){
+  echo $e -> getMessage();
+}
+
+
+
+?>
+            <form action="" method="post">
               <div class="form-group row">
                 <div class="col-md-6 mb-4 mb-lg-0">
-                  <input type="text" class="form-control" placeholder="First name">
+                  <input type="text" class="form-control" placeholder="First name" name="first_name">
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="First name">
+                  <input type="text" class="form-control" placeholder="Last name" name="last_name">
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <input type="text" class="form-control" placeholder="Email address">
+                  <input type="text" class="form-control" placeholder="Email address" name="email">
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <textarea name="" id="" class="form-control" placeholder="Write your message." cols="30" rows="10"></textarea>
+                  <textarea name="message" id="" class="form-control" placeholder="Write your message." cols="30" rows="10"></textarea>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-6 mr-auto">
-                  <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5" value="Send Message">
+                  <input type="submit" name="sendContactEmail" class="btn btn-block btn-primary text-white py-3 px-5" value="Send Message">
                 </div>
               </div>
             </form>
