@@ -2,6 +2,10 @@
 <?php require_once 'include/db.inc.php' ?>
 <?php require_once 'include/class_autoloader.inc.php';?>
 <?php
+require_once 'include/phpFlashMessages/src/FlashMessages.php'; 
+$msg = new \Plasticbrain\FlashMessages\FlashMessages(); 
+?>
+<?php
 
 try{
   $blog = new Blog();

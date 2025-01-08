@@ -1,6 +1,10 @@
 <?php require_once 'include/config.inc.php' ?>
 <?php require_once 'include/db.inc.php' ?>
 <?php require_once 'include/class_autoloader.inc.php' ?>
+<?php
+require_once 'include/phpFlashMessages/src/FlashMessages.php'; 
+$msg = new \Plasticbrain\FlashMessages\FlashMessages(); 
+?>
 <!doctype html>
 <html lang="en">
 
@@ -80,7 +84,7 @@ if( isset($_POST['sendContactEmail'])){
 
 }// main if
 
-
+$msg->display();
 
 
 } catch ( PDOException $e ){
@@ -124,9 +128,9 @@ if( isset($_POST['sendContactEmail'])){
               <ul class="list-unstyled footer-link">
                 <li class="d-block mb-3">
                   <span class="d-block text-black">Address:</span>
-                  <span>34 Street Name, City Name Here, United States</span></li>
-                <li class="d-block mb-3"><span class="d-block text-black">Phone:</span><span>+1 242 4942 290</span></li>
-                <li class="d-block mb-3"><span class="d-block text-black">Email:</span><span>info@yourdomain.com</span></li>
+                  <span><?php  echo ADMIN_ADRESS; ?>, <?php  echo ADMIN_CITY ?> , <?php  echo ADMIN_STATE; ?></span></li>
+                <li class="d-block mb-3"><span class="d-block text-black">Phone:</span><span><?php  echo ADMIN_PHONE; ?></span></li>
+                <li class="d-block mb-3"><span class="d-block text-black">Email:</span><span><?php  echo ADMIN_EMAIL; ?></span></li>
               </ul>
             </div>
           </div>
