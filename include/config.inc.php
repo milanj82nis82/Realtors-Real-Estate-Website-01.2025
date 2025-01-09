@@ -38,3 +38,16 @@ define ( 'ADMIN_STATE'  , 'Serbia' );
 define ( 'ADMIN_CITY'  , 'Niš' );
 define ( 'ADMIN_PHONE'  , '+1 242 4942 290' );
 
+/*      COMPANY CONFIGURATION 
+____________________________     */
+
+define ( 'COMPANY_NAME'  , 'ARIN INVEST D.O.O.' );
+define ( 'COMPANY_ADDRESS'  , 'Knjaza Miloša 193' ); 
+define ( 'COMPANY_CITY'  , ' Aranđelovac' ); 
+define ( 'COMPANY_POSTAL_CODE'  , 34300 );
+define ( 'COMPANY_EMAIL'  , 'arininvest.a@gmail.com' );
+define ( 'COMPANY_STATE'  , 'Serbia' );
+define ( 'COMPANY_PHONE'  , '+381 34/21-00-114' );
+define ( 'COMPANY_WEBSITE'  , 'http://localhost/real-estate/' );
+
+

@@ -37,9 +37,6 @@ public function logout(){
 
 
 
-
-
-
 }// User
 
 

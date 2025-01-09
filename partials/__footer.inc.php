@@ -11,11 +11,11 @@
           <div class="col-md-3 ml-auto">
             <h3 class="text-white h5 mb-3">Subscribe</h3>
             <ul class="list-unstyled menu-arrow">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Testimonials</a></li>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">Privacy</a></li>
-              <li><a href="#">Contact Us</a></li>
+              <li><a href="about-us.php">About Us</a></li>
+              <li><a href="testemonials.php">Testimonials</a></li>
+              <li><a href="terms-of-service.php">Terms of Service</a></li>
+              <li><a href="privacy-policy.php">Privacy policy</a></li>
+              <li><a href="contact.php">Contact Us</a></li>
             </ul>
           </div>
           <div class="col-md-4">
