@@ -29,7 +29,7 @@ try {
                 
                 <h2><a href="blog-single.php?slug=<?php  echo $blogSingle['slug'] ?>">
                 <?php  echo $blogSingle['title'] ?></a></h2>
-                <span class="meta d-inline-block mb-3"><?php  echo $blogSingle['created_at'] ?>
+                <span class="meta d-inline-block mb-3"><?php  echo get_time_ago( strtotime($blogSingle['created_at']) ); ?>
                  <span class="mx-2">by</span> <a href="#">
                   <?php  echo $admin -> getAdminDetailsById($blogSingle['admin_id'])['first_name'] .' 
                   '. $admin -> getAdminDetailsById($blogSingle['admin_id'])['last_name'] ?></a></span>

@@ -128,9 +128,9 @@ $msg->display();
               <ul class="list-unstyled footer-link">
                 <li class="d-block mb-3">
                   <span class="d-block text-black">Address:</span>
-                  <span><?php  echo ADMIN_ADRESS; ?>, <?php  echo ADMIN_CITY ?> , <?php  echo ADMIN_STATE; ?></span></li>
-                <li class="d-block mb-3"><span class="d-block text-black">Phone:</span><span><?php  echo ADMIN_PHONE; ?></span></li>
-                <li class="d-block mb-3"><span class="d-block text-black">Email:</span><span><?php  echo ADMIN_EMAIL; ?></span></li>
+                  <span><?php  echo COMPANY_ADDRESS; ?>, <BR></BR><?php  echo COMPANY_CITY ?> , <?php  echo COMPANY_STATE; ?></span></li>
+                <li class="d-block mb-3"><span class="d-block text-black">Phone:</span><span><?php  echo COMPANY_PHONE; ?></span></li>
+                <li class="d-block mb-3"><span class="d-block text-black">Email:</span><span><?php  echo COMPANY_EMAIL; ?></span></li>
               </ul>
             </div>
           </div>

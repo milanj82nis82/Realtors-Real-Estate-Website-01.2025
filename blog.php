@@ -1,7 +1,9 @@
 <?php require_once 'include/config.inc.php' ?>
 <?php require_once 'include/db.inc.php' ?>
 <?php require_once 'include/class_autoloader.inc.php' ?>
+<?php require_once 'include/timeago.php' ?>
 <?php
+
 require_once 'include/phpFlashMessages/src/FlashMessages.php'; 
 $msg = new \Plasticbrain\FlashMessages\FlashMessages(); 
 ?>
@@ -86,7 +88,8 @@ foreach ( $blog -> getAllBlogPosts()['posts'] as $postSingle ) {
               <div class="post-entry-1-contents">
                 
                 <h2><a href="blog-single.php?slug=<?php echo $postSingle['slug']  ?>"><?php echo $postSingle['title']  ?></a></h2>
-                <span class="meta d-inline-block mb-3"><?php echo $postSingle['created_at']  ?> 
+                <span class="meta d-inline-block mb-3">
+                  <?php echo get_time_ago( strtotime($postSingle['created_at']) ); ?> 
                 <span class="mx-2">by</span> <a href="#"><?php echo $admin -> getAdminDetailsById($postSingle['admin_id'])['first_name'] .' 
                 '.  $admin -> getAdminDetailsById($postSingle['admin_id'])['last_name']  ?></a></span>
                 <p><?php echo substr( $postSingle['excerpt'], 0 , 200 )  ?>...</p>

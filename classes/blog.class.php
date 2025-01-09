@@ -85,7 +85,12 @@ class Blog extends DbConnect {
         }
         return $result;
     }
-
+    public function getCarouselBlogPosts() {
+        $sql = 'select * from blogs order by created_at desc limit 6';
+        $query = $this->connect()->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
 
 }// Blog
 
