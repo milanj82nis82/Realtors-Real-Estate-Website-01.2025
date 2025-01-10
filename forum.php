@@ -279,9 +279,9 @@ try {
     $forum = new Forum();
     ?>
    <div class="pull-right forum-desc">
-          <samll>Total Threads : <b><?php echo $forum -> getCountOfAllThreads();  ?></b></samll> | 
-          <samll>Total Posts : <b><?php echo $forum -> getCountOfAllPosts();  ?></b></samll> | 
-          <samll>Total Replies : <b><?php echo $forum -> getCountOfAllReplies();  ?></b></samll>
+          <samll>Total Threads : <b class="font-weight-bold"><?php echo $forum -> getCountOfAllThreads();  ?></b></samll> | 
+          <samll>Total Posts : <b class="font-weight-bold"><?php echo $forum -> getCountOfAllPosts();  ?></b></samll> | 
+          <samll>Total Replies : <b class="font-weight-bold"><?php echo $forum -> getCountOfAllReplies();  ?></b></samll>
      </div>
 
 <?php
@@ -304,7 +304,8 @@ foreach ( $forum -> getAllThreadsByForumId($forumSingle['id']) as $threadSingle)
                             <div class="forum-icon">
                                 <i class="fa fa-shield"></i>
                             </div>
-                            <a href="view-posts.php?threadId=<?php echo $threadSingle['id'] ?>" class="forum-item-title"><?php echo $threadSingle['title']  ?></a>
+                            <a href="view-posts.php?threadId=<?php echo $threadSingle['id'] ?>" 
+                            class="forum-item-title"><?php echo $threadSingle['title']  ?></a>
                             <div class="forum-sub-title"><?php echo substr($threadSingle['description'], 0 , 250 )  ?></div>
                             <div class="forum-sub-title">
 
