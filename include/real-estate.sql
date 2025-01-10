@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2025 at 10:29 AM
+-- Generation Time: Jan 10, 2025 at 10:44 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -798,7 +798,52 @@ CREATE TABLE `posts` (
 
 INSERT INTO `posts` (`id`, `thread_id`, `user_id`, `content`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 'Hello everyone! Welcome to the forum.', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
-(2, 2, 2, 'When buying a home, always get a home inspection.', '2025-01-01 00:00:00', '2025-01-01 00:00:00');
+(2, 2, 2, 'When buying a home, always get a home inspection.', '2025-01-01 00:00:00', '2025-01-01 00:00:00'),
+(3, 3, 1, 'Welcome to Property Forum\'s general discussions forum - Introduction video', '2025-01-10 09:32:45', '2025-01-10 09:32:45'),
+(4, 3, 1, 'Free Resource - The importance of forum discussion', '2025-01-10 09:32:45', '2025-01-10 09:32:45'),
+(5, 3, 1, 'Forum Rules, Terms and Conditions', '2025-01-10 09:32:45', '2025-01-10 09:32:45'),
+(6, 3, 3, 'What are the best materials for a kitchen remodel?', '2025-01-10 09:32:45', '2025-01-10 09:32:45'),
+(7, 3, 2, 'Investing abroad = moving there?', '2025-01-10 09:32:45', '2025-01-10 09:32:45'),
+(8, 3, 2, 'Gold Coast Gummies Australia', '2025-01-10 09:32:45', '2025-01-10 09:32:45'),
+(9, 4, 5, 'Property Management Pascoe Vale', '2025-01-10 09:35:10', '2025-01-10 09:35:10'),
+(10, 4, 1, 'More grand parents, parents and children living together', '2025-01-10 09:35:10', '2025-01-10 09:35:10'),
+(11, 4, 5, 'Should we expect a trend towards working from home and larger properties?', '2025-01-10 09:35:10', '2025-01-10 09:35:10'),
+(12, 5, 1, 'Twin Elements CBD Gummies Shark Tank Benefits and Side Effects', '2025-01-10 09:35:10', '2025-01-10 09:35:10'),
+(13, 5, 5, 'Investing between 70-85k', '2025-01-10 09:35:10', '2025-01-10 09:35:10'),
+(14, 5, 4, 'Use Equity or Mortgage to buy??', '2025-01-10 09:35:10', '2025-01-10 09:35:10'),
+(15, 6, 4, 'Protetox', '2025-01-10 09:35:10', '2025-01-10 09:35:10'),
+(16, 6, 5, 'Exodus Effect Reviews - Is It Safe Or Not?', '2025-01-10 09:35:10', '2025-01-10 09:35:10'),
+(19, 7, 7, 'Reserve Your Home in Ambernath | 2 BHK @ ₹48 L*', '2025-01-10 09:37:18', '2025-01-10 09:37:18'),
+(20, 7, 2, 'Are you looking for the best 1, 2 BHK Homes?', '2025-01-10 09:37:18', '2025-01-10 09:37:18'),
+(21, 7, 7, 'Bridging loan', '2025-01-10 09:37:18', '2025-01-10 09:37:18'),
+(22, 8, 8, 'Holiday home in Cornwall', '2025-01-10 09:37:18', '2025-01-10 09:37:18'),
+(23, 8, 3, 'Holiday Letting, Is It Safe ?', '2025-01-10 09:37:18', '2025-01-10 09:37:18'),
+(24, 8, 4, 'Is investing in holiday let at Whitley Bay Newcastle by the beach a good idea', '2025-01-10 09:37:18', '2025-01-10 09:37:18'),
+(25, 10, 4, 'Mortgage with bad credit', '2025-01-10 09:39:53', '2025-01-10 09:39:53'),
+(26, 10, 5, 'Do you use mortgage brokers?', '2025-01-10 09:39:53', '2025-01-10 09:39:53'),
+(27, 10, 5, 'Is real estate your investment of choice?', '2025-01-10 09:39:53', '2025-01-10 09:39:53'),
+(28, 11, 2, 'Hotel property tax', '2025-01-10 09:39:53', '2025-01-10 09:39:53'),
+(29, 11, 9, 'How should I structure my company finances.', '2025-01-10 09:39:53', '2025-01-10 09:39:53'),
+(30, 11, 4, 'Newbie- buy and renovate privately or through a compa', '2025-01-10 09:39:53', '2025-01-10 09:39:53'),
+(31, 12, 4, 'Who owns which fence based on form TA6?', '2025-01-10 09:39:53', '2025-01-10 09:39:53'),
+(32, 12, 2, 'How to protect house and pay off debts - sibling is gam', '2025-01-10 09:39:53', '2025-01-10 09:39:53'),
+(33, 12, 2, 'Estate agent contract', '2025-01-10 09:39:53', '2025-01-10 09:39:53'),
+(34, 13, 3, 'What is the current best overseas investment for rental ', '2025-01-10 09:41:28', '2025-01-10 09:41:28'),
+(35, 13, 3, 'High yielding property 8% and above', '2025-01-10 09:41:28', '2025-01-10 09:41:28'),
+(36, 13, 3, 'Any Tips for First Time Buyer ???', '2025-01-10 09:41:28', '2025-01-10 09:41:28'),
+(37, 13, 3, 'How long do you think the global economic downturn will last?', '2025-01-10 09:41:28', '2025-01-10 09:41:28'),
+(38, 13, 6, 'Free resource - A guide to buying overseas property', '2025-01-10 09:41:28', '2025-01-10 09:41:28'),
+(39, 13, 7, '35% discounted property with 110% finance in Spain - watch the video', '2025-01-10 09:41:28', '2025-01-10 09:41:28'),
+(40, 13, 8, 'Forum Sponsor - Europa Estates and Finance, specialists in discounted overseas property', '2025-01-10 09:41:28', '2025-01-10 09:41:28'),
+(41, 19, 4, 'Commercial or Residential property?', '2025-01-10 09:43:56', '2025-01-10 09:43:56'),
+(42, 19, 5, 'Investing In US Property From Australia', '2025-01-10 09:43:56', '2025-01-10 09:43:56'),
+(43, 19, 2, 'Property investment in Australia', '2025-01-10 09:43:56', '2025-01-10 09:43:56'),
+(44, 20, 6, 'Investing in co-living business in Morocco', '2025-01-10 09:43:56', '2025-01-10 09:43:56'),
+(45, 20, 4, 'When do you pay property taxes in Egypt ?', '2025-01-10 09:43:56', '2025-01-10 09:43:56'),
+(46, 20, 6, 'Moving money out of Morocco', '2025-01-10 09:43:56', '2025-01-10 09:43:56'),
+(47, 21, 4, 'Moving advice', '2025-01-10 09:43:56', '2025-01-10 09:43:56'),
+(48, 21, 2, 'Costa Rica Hotels', '2025-01-10 09:43:56', '2025-01-10 09:43:56'),
+(49, 21, 5, 'VIRTUAL TOUR SOFTWARE', '2025-01-10 09:43:56', '2025-01-10 09:43:56');
 
 -- --------------------------------------------------------
 
@@ -1226,6 +1271,12 @@ ALTER TABLE `forums`
   ADD KEY `forums_ibfk_1` (`admin_id`);
 
 --
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `properties`
 --
 ALTER TABLE `properties`
@@ -1307,6 +1358,12 @@ ALTER TABLE `clients`
 --
 ALTER TABLE `forums`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `properties`
