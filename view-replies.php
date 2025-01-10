@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php require_once 'include/config.inc.php' ?>
 <?php require_once 'include/db.inc.php' ?>
 <?php require_once 'include/class_autoloader.inc.php';?>
@@ -15,6 +16,7 @@ try {
     }
     $postName = $forum -> getPostDetailsByPostId($postId)['title'];
     $postDescription = $forum -> getPostDetailsByPostId($postId)['description'];
+    $forum -> updateReplyViews( $postId );
 
 
 } catch ( PDOException $e ){
@@ -497,4 +499,4 @@ $user = new User();
   </body>
 
 </html>
-
+<?php ob_end_flush(); ?>

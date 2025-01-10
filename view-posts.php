@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php require_once 'include/config.inc.php' ?>
 <?php require_once 'include/db.inc.php' ?>
 <?php require_once 'include/class_autoloader.inc.php';?>
@@ -15,7 +16,8 @@ try {
     }
     $threadName = $forum -> getThreadDetailsById($threadId)['title'];
     $threadDescription = $forum -> getThreadDetailsById($threadId)['description'];
-
+    $threadView = $forum -> getThreadDetailsById($threadId)['views'];
+    $forum -> updateThreadViews( $threadId );
 
 } catch ( PDOException $e ){
     echo $e -> getMessage();
@@ -395,4 +397,4 @@ try {
   </body>
 
 </html>
-
+<?php ob_end_flush(); ?>

@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php require_once 'include/config.inc.php' ?>
 <?php require_once 'include/db.inc.php' ?>
 <?php require_once 'include/class_autoloader.inc.php';?>
@@ -83,4 +84,4 @@ $msg = new \Plasticbrain\FlashMessages\FlashMessages();
   </body>
 
 </html>
-
+<?php ob_end_flush(); ?>

@@ -1,6 +1,9 @@
+<?php ob_start(); ?>
 <?php require_once 'include/config.inc.php' ?>
 <?php require_once 'include/db.inc.php' ?>
 <?php require_once 'include/class_autoloader.inc.php';?>
+<?php $_SESSION['logged_as_admin']  = 1 ?>
+
 <?php
 require_once 'include/phpFlashMessages/src/FlashMessages.php'; 
 $msg = new \Plasticbrain\FlashMessages\FlashMessages(); 
@@ -223,6 +226,7 @@ a.forum-item-title:hover {
 .m-b-sm {
     margin-bottom: 10px;
 }
+
 </style>
 
 
@@ -287,6 +291,7 @@ try {
 <div class="forum-title">
                  
                     <h3><?php  echo $forumSingle['name']; ?></h3>
+                   
                 </div>
 
 <?php
@@ -352,6 +357,58 @@ Author: <strong  class="font-weight-bold"><a href="">Milan Janković</a></strong
 <?php
     }// end foreach
 
+$admin = new Admin();
+
+if( $admin -> checkIsUserAdmin()){
+try {
+
+
+  if( isset($_POST['addForum'])){
+
+
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $admin_id = 1;
+    $admin -> addForum( $name , $description , $admin_id );
+
+  }// main isset
+
+
+} catch ( PDOException $e ){
+  echo $e -> getMessage();
+}
+
+
+?>
+
+
+
+<form action="" method="POST">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Forum title</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" name="name">
+  </div>
+ 
+ 
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Forum description</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" name="description"></textarea>
+  </div>
+  <div class="form-group">
+    
+   <button class="btn btn-primary" name="addForum" type="submit">Add forum</button>
+  </div>
+</form>
+
+<?php
+
+
+} else {
+echo 'You are not admin';
+}
+
+
+
 
 
 } catch ( PDOException $e) {
@@ -399,4 +456,4 @@ Author: <strong  class="font-weight-bold"><a href="">Milan Janković</a></strong
   </body>
 
 </html>
-
+<?php ob_end_flush(); ?>

@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php require_once ( 'include/config.inc.php'); ?>
 <?php require_once ( 'include/db.inc.php'); ?>
 <?php require_once ( 'include/class_autoloader.inc.php'); ?>
@@ -42,8 +43,8 @@ foreach ($blog -> getHomeBlogPosts()['posts'] as $blogPost){
                             <a href="view-user.php?id=<?php echo $blogPost['user_id'] ?>">  
                                 <strong>
                             <?php  
-                            echo $user -> getUserDetailsById($blogPost['user_id'])['first_name'] . ' 
-                            ' . $user -> getUserDetailsById($blogPost['user_id'])['last_name'] ;   
+                            echo $user -> getUserDetails($blogPost['user_id'])['first_name'] . ' 
+                            ' . $user -> getUserDetails($blogPost['user_id'])['last_name'] ;   
                             
                             ?>
                                 </strong>
@@ -116,3 +117,4 @@ for ( $x =1 ; $x <= $pages ; $x++ ){
         <script src="js/scripts.js"></script>
     </body>
 </html>
+<?php ob_end_flush(); ?>

@@ -105,7 +105,20 @@ public function getAllPostsByThreadId( $thread_id){
 
     }// getCountOfAllThreads
 
+    public function updateThreadViews($threadId){
 
+        $sql = 'update threads set views = views + 1 where id = ?';
+        $query = $this -> connect() -> prepare($sql);
+        $query -> execute([$threadId]);
+
+    }// updateThreadsViews    
+    public function updateReplyViews($replyId){
+
+        $sql = 'UPDATE posts SET views = views + 1 where id = ?';
+        $query = $this -> connect() -> prepare($sql);
+        $query -> execute([$replyId]);
+
+    }// updateThreadsViews
     
 
 }// Forum
