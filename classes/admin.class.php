@@ -11,14 +11,14 @@ public function getAdminDetailsById( $id ){
     $result = $query -> fetch();
     return $result;
 
-
-
 }// getAdmnDetails
 
 
 
 
-}
+
+
+}// Admin
 
 
 

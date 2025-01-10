@@ -72,4 +72,40 @@ public function getAllPostsByThreadId( $thread_id){
     }// getAllRepliesByPostId
 
 
+    public function getCountOfAllThreads(){
+
+        $sql = 'select count(*) as posts_count from threads ';
+        $query = $this -> connect() -> prepare($sql);
+        $query -> execute( [ ]);
+        $postsCount = $query -> fetch();
+        return $postsCount['posts_count'];
+
+
+    }// getCountOfAllThreads
+
+    public function getCountOfAllReplies(){
+
+        $sql = 'select count(*) as posts_count from replies ';
+        $query = $this -> connect() -> prepare($sql);
+        $query -> execute( [ ]);
+        $postsCount = $query -> fetch();
+        return $postsCount['posts_count'];
+
+
+    }// getCountOfAllThreads
+
+    public function getCountOfAllPosts(){
+
+        $sql = 'select count(*) as posts_count from posts ';
+        $query = $this -> connect() -> prepare($sql);
+        $query -> execute( [ ]);
+        $postsCount = $query -> fetch();
+        return $postsCount['posts_count'];
+
+
+    }// getCountOfAllThreads
+
+
+    
+
 }// Forum

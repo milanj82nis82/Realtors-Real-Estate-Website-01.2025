@@ -36,6 +36,7 @@ try {
 <meta property="business:contact_data:locality" content="Niš">
 <meta property="business:contact_data:region" content="Nišavski okrug">
 <meta property="business:contact_data:country_name" content="Serbia">
+<link rel="stylesheet" href="include/fontawesome/css/all.css">
 
 
 <style type="text/css">
@@ -418,7 +419,8 @@ $user = new User();
 				<?php echo $replieSingle['content'] ?>
 			</div>
             <div class="be-comment-text">
-				<?php echo $replieSingle['likes'] ?> <?php echo $replieSingle['dislikes'] ?>
+				<?php echo $replieSingle['likes'] ?> <i class="fa-solid fa-thumbs-up"></i> | 
+                <?php echo $replieSingle['dislikes'] ?> <i class="fa-solid fa-thumbs-down"></i> 
 			</div>
            
 		</div>
@@ -491,7 +493,7 @@ $user = new User();
     <script src="js/aos.js"></script>
 
     <script src="js/main.js"></script>
-
+<script src="include/fontawesome/js/all.js"></script>
   </body>
 
 </html>

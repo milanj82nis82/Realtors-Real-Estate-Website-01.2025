@@ -273,14 +273,19 @@ a.forum-item-title:hover {
 try {
 
     $forum = new Forum();
-    
+    ?>
+   <div class="pull-right forum-desc">
+          <samll>Total Threads : <b><?php echo $forum -> getCountOfAllThreads();  ?></b></samll> | 
+          <samll>Total Posts : <b><?php echo $forum -> getCountOfAllPosts();  ?></b></samll> | 
+          <samll>Total Replies : <b><?php echo $forum -> getCountOfAllReplies();  ?></b></samll>
+     </div>
+
+<?php
     foreach ( $forum -> getAllForums() as $forumSingle ){
 ?>
 
 <div class="forum-title">
-                    <div class="pull-right forum-desc">
-                        <samll>Total posts: 320,800</samll>
-                    </div>
+                 
                     <h3><?php  echo $forumSingle['name']; ?></h3>
                 </div>
 
@@ -296,7 +301,14 @@ foreach ( $forum -> getAllThreadsByForumId($forumSingle['id']) as $threadSingle)
                             </div>
                             <a href="view-posts.php?threadId=<?php echo $threadSingle['id'] ?>" class="forum-item-title"><?php echo $threadSingle['title']  ?></a>
                             <div class="forum-sub-title"><?php echo substr($threadSingle['description'], 0 , 250 )  ?></div>
-                        </div>
+                            <div class="forum-sub-title">
+
+Author: <strong  class="font-weight-bold"><a href="">Milan Janković</a></strong>
+                            </div>
+                        
+                        
+                          </div>
+
                         <div class="col-md-1 forum-info">
                             <span class="views-number">
                                 <?php echo $threadSingle['views']; ?>
