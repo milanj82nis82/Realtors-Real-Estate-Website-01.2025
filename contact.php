@@ -141,6 +141,17 @@ $msg->display();
 
 
 
+   
+    <div class="site-section bg-dark" id="contact-section">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+        <div class="col-12 text-center mb-5">
+<?php   require_once 'partials/__google_maps.inc.php' ?>
+
+        </div>
+        </div>
+      </div>
+    </div>
 
 
 <?php require_once 'partials/__testemonials.inc.php' ?> 
