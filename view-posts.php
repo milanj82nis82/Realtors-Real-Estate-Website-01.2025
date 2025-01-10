@@ -4,6 +4,22 @@
 <?php
 require_once 'include/phpFlashMessages/src/FlashMessages.php'; 
 $msg = new \Plasticbrain\FlashMessages\FlashMessages(); 
+
+try {
+
+    $forum = new Forum();
+    $threadId = (int)$_GET['threadId'];
+    if( !$threadId && empty($threadId)){
+        header('Location:forum.php');
+        exit();
+    }
+    $threadName = $forum -> getThreadDetailsById($threadId)['title'];
+    $threadDescription = $forum -> getThreadDetailsById($threadId)['description'];
+
+
+} catch ( PDOException $e ){
+    echo $e -> getMessage();
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -262,8 +278,8 @@ a.forum-item-title:hover {
                     <div class="pull-left m-r-md">
                         <i class="fa fa-globe text-navy mid-icon"></i>
                     </div>
-                    <h2>Welcome to our forum</h2>
-                    <span>Feel free to choose topic you're interested in.</span>
+                    <h2><?php echo $threadName; ?></h2>
+                    <span><?php echo $threadDescription; ?></span>
                 </div>
             </div>
 
@@ -273,72 +289,64 @@ a.forum-item-title:hover {
 try {
 
     $forum = new Forum();
-    
-    foreach ( $forum -> getAllForums() as $forumSingle ){
-?>
+  $postsInThreads = $forum -> getAllPostsByThreadId($threadId);
 
-<div class="forum-title">
-                    <div class="pull-right forum-desc">
-                        <samll>Total posts: 320,800</samll>
-                    </div>
-                    <h3><?php  echo $forumSingle['name']; ?></h3>
-                </div>
+  if( count($postsInThreads) > 0 ){
 
-<?php
 
-foreach ( $forum -> getAllThreadsByForumId($forumSingle['id']) as $threadSingle){
-?>
- <div class="forum-item active">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <div class="forum-icon">
-                                <i class="fa fa-shield"></i>
-                            </div>
-                            <a href="view-posts.php?threadId=<?php echo $threadSingle['id'] ?>" class="forum-item-title"><?php echo $threadSingle['title']  ?></a>
-                            <div class="forum-sub-title"><?php echo substr($threadSingle['description'], 0 , 250 )  ?></div>
-                        </div>
-                        <div class="col-md-1 forum-info">
-                            <span class="views-number">
-                                <?php echo $threadSingle['views']; ?>
-                            </span>
-                            <div>
-                                <small>Views</small>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-1 forum-info">
-                            <span class="views-number">
-                                <?php  echo $forum -> getPostsCountInThreadsByThreadId($threadSingle['id']) ?>
-                            </span>
-                            <div>
-                                <small>Posts</small>
-                            </div>
-                        </div>
-                        <div class="col-md-1 forum-info">
-                           
-                            <div>
-                            <span class="views-number">
-                                <a href="view-posts.php?threadId=<?php echo  $threadSingle['id'] ?>" class="btn btn-primary">Follow</a>
-                            </span>
+
+    foreach ( $forum -> getAllPostsByThreadId($threadId) as $postSingle){
+        ?>
+         <div class="forum-item active">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="forum-icon">
+                                        <i class="fa fa-shield"></i>
+                                    </div>
+                                    <a href="view-posts.php?threadId=<?php echo $postSingle['id'] ?>" 
+                                    class="forum-item-title"><?php echo $postSingle['title']  ?></a>
+                                    <div class="forum-sub-title"><?php echo substr($postSingle['description'], 0 , 250 )  ?></div>
+                                </div>
+                                <div class="col-md-1 forum-info">
+                                    <span class="views-number">
+                                       1
+                                    </span>
+                                    <div>
+                                        <small>Views</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-1 forum-info">
+                                    <span class="views-number">
+                                        1
+                                    </span>
+                                    <div>
+                                        <small>Replies</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 forum-info">
+                                   
+                                    <div>
+                                    <span class="views-number">
+                                        <a href="view-posts.php?threadId=<?php echo  $postSingle['id'] ?>" class="btn btn-primary">Follow</a>
+                                    </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+        
+        <?php
+        }// end foreach
+        
 
-<?php
-}// end foreach
+  } else {
 
-
-
-?>
-
-               
-
-                
+    echo '<div class="alert alert-primary" role="alert">
+  This thread dont have any posts.
+</div>';
+  }
 
 
-<?php
-    }// end foreach
 
 
 

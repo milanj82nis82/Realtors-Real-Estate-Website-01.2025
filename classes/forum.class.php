@@ -14,7 +14,7 @@ class Forum extends DbConnect {
 
     public function getAllThreadsByForumId( $forumId){
 
-        $sql = 'select * from threads where forum_id = ? order by created_at desc';
+        $sql = 'select * from threads where forum_id = ? order by created_at desc limit 3';
         $query = $this -> connect() -> prepare($sql);
         $query -> execute( [ $forumId]);
         $threads = $query -> fetchAll();
@@ -29,11 +29,26 @@ class Forum extends DbConnect {
         $query -> execute( [ $threadId]);
         $postsCount = $query -> fetch();
         return $postsCount['posts_count'];
-        
+
 
 
     }// getPostsCountInThreadsByThreadId
+public function getAllPostsByThreadId( $thread_id){
 
+    $sql = 'select * from posts where thread_id = ? order by created_at asc';
+    $query = $this -> connect() -> prepare($sql);
+    $query -> execute([$thread_id]);
+    $posts = $query -> fetchAll();
+    return $posts;
 
+}//   getAllPostsByThreadId
+
+    public function getThreadDetailsById($threadId ){
+        $sql = 'select * from threads where id = ? limit 1 ';
+        $query = $this -> connect() -> prepare($sql);
+        $query -> execute([ $threadId]);
+        $thread = $query -> fetch();
+        return $thread;
+    }// getThreadDetailsById
 
 }// Forum
