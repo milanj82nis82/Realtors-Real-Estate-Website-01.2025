@@ -303,7 +303,7 @@ try {
                                     <div class="forum-icon">
                                         <i class="fa fa-shield"></i>
                                     </div>
-                                    <a href="view-posts.php?threadId=<?php echo $postSingle['id'] ?>" 
+                                    <a href="view-replies.php?postId=<?php echo $postSingle['id'] ?>" 
                                     class="forum-item-title"><?php echo $postSingle['title']  ?></a>
                                     <div class="forum-sub-title"><?php echo substr($postSingle['description'], 0 , 250 )  ?></div>
                                 </div>
@@ -328,7 +328,7 @@ try {
                                    
                                     <div>
                                     <span class="views-number">
-                                        <a href="view-posts.php?threadId=<?php echo  $postSingle['id'] ?>" class="btn btn-primary">Follow</a>
+                                        <a href="view-replies.php?postId=<?php echo  $postSingle['id'] ?>" class="btn btn-primary">Follow</a>
                                     </span>
                                     </div>
                                 </div>

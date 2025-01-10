@@ -51,4 +51,25 @@ public function getAllPostsByThreadId( $thread_id){
         return $thread;
     }// getThreadDetailsById
 
+
+    public function getPostDetailsByPostId($postId){
+
+        $sql = 'select * from posts where id = ? limit 1 ';
+        $query = $this -> connect() -> prepare($sql);
+        $query -> execute([ $postId]);
+        $post = $query -> fetch();
+        return $post;
+
+    }// getPostDetailsById
+    public function getAllRepliesByPostId($postId){
+        $sql = 'select * from replies where post_id = ? order by created_at asc';
+        $query = $this -> connect() -> prepare($sql);
+        $query -> execute([$postId]);
+        $replies = $query -> fetchAll();
+        return $replies;
+
+
+    }// getAllRepliesByPostId
+
+
 }// Forum
