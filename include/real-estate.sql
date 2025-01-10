@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2025 at 11:39 AM
+-- Generation Time: Jan 10, 2025 at 11:51 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -1103,6 +1103,69 @@ INSERT INTO `property_images` (`id`, `property_id`, `image_url`, `created_at`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `replies`
+--
+
+CREATE TABLE `replies` (
+  `id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `likes` int(11) NOT NULL DEFAULT 0,
+  `dislikes` int(11) NOT NULL DEFAULT 0,
+  `content` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `replies`
+--
+
+INSERT INTO `replies` (`id`, `post_id`, `user_id`, `likes`, `dislikes`, `content`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 10, 2, 'This is a dummy reply content 1', '2025-01-10 10:00:00', '2025-01-10 10:00:00'),
+(2, 2, 2, 5, 1, 'This is a dummy reply content 2', '2025-01-10 10:01:00', '2025-01-10 10:01:00'),
+(3, 3, 3, 8, 0, 'This is a dummy reply content 3', '2025-01-10 10:02:00', '2025-01-10 10:02:00'),
+(4, 4, 4, 3, 4, 'This is a dummy reply content 4', '2025-01-10 10:03:00', '2025-01-10 10:03:00'),
+(5, 5, 5, 7, 2, 'This is a dummy reply content 5', '2025-01-10 10:04:00', '2025-01-10 10:04:00'),
+(6, 6, 6, 2, 3, 'This is a dummy reply content 6', '2025-01-10 10:05:00', '2025-01-10 10:05:00'),
+(7, 7, 7, 6, 1, 'This is a dummy reply content 7', '2025-01-10 10:06:00', '2025-01-10 10:06:00'),
+(8, 8, 8, 4, 0, 'This is a dummy reply content 8', '2025-01-10 10:07:00', '2025-01-10 10:07:00'),
+(9, 9, 9, 9, 2, 'This is a dummy reply content 9', '2025-01-10 10:08:00', '2025-01-10 10:08:00'),
+(10, 10, 10, 1, 5, 'This is a dummy reply content 10', '2025-01-10 10:09:00', '2025-01-10 10:09:00'),
+(11, 11, 11, 3, 1, 'This is a dummy reply content 11', '2025-01-10 10:10:00', '2025-01-10 10:10:00'),
+(12, 12, 12, 5, 0, 'This is a dummy reply content 12', '2025-01-10 10:11:00', '2025-01-10 10:11:00'),
+(13, 13, 13, 2, 4, 'This is a dummy reply content 13', '2025-01-10 10:12:00', '2025-01-10 10:12:00'),
+(14, 14, 14, 6, 3, 'This is a dummy reply content 14', '2025-01-10 10:13:00', '2025-01-10 10:13:00'),
+(15, 15, 15, 4, 1, 'This is a dummy reply content 15', '2025-01-10 10:14:00', '2025-01-10 10:14:00'),
+(16, 16, 16, 7, 0, 'This is a dummy reply content 16', '2025-01-10 10:15:00', '2025-01-10 10:15:00'),
+(17, 17, 17, 1, 2, 'This is a dummy reply content 17', '2025-01-10 10:16:00', '2025-01-10 10:16:00'),
+(18, 18, 18, 8, 1, 'This is a dummy reply content 18', '2025-01-10 10:17:00', '2025-01-10 10:17:00'),
+(19, 19, 19, 5, 3, 'This is a dummy reply content 19', '2025-01-10 10:18:00', '2025-01-10 10:18:00'),
+(20, 20, 20, 2, 4, 'This is a dummy reply content 20', '2025-01-10 10:19:00', '2025-01-10 10:19:00'),
+(21, 21, 3, 6, 0, 'This is a dummy reply content 21', '2025-01-10 10:20:00', '2025-01-10 10:51:13'),
+(22, 22, 22, 4, 2, 'This is a dummy reply content 22', '2025-01-10 10:21:00', '2025-01-10 10:21:00'),
+(23, 23, 3, 7, 1, 'This is a dummy reply content 23', '2025-01-10 10:22:00', '2025-01-10 10:51:10'),
+(24, 24, 24, 3, 5, 'This is a dummy reply content 24', '2025-01-10 10:23:00', '2025-01-10 10:23:00'),
+(25, 25, 1, 9, 0, 'This is a dummy reply content 25', '2025-01-10 10:24:00', '2025-01-10 10:51:08'),
+(26, 26, 26, 1, 3, 'This is a dummy reply content 26', '2025-01-10 10:25:00', '2025-01-10 10:25:00'),
+(27, 27, 27, 5, 2, 'This is a dummy reply content 27', '2025-01-10 10:26:00', '2025-01-10 10:26:00'),
+(28, 28, 28, 8, 1, 'This is a dummy reply content 28', '2025-01-10 10:27:00', '2025-01-10 10:27:00'),
+(29, 29, 29, 4, 0, 'This is a dummy reply content 29', '2025-01-10 10:28:00', '2025-01-10 10:28:00'),
+(30, 30, 30, 6, 3, 'This is a dummy reply content 30', '2025-01-10 10:29:00', '2025-01-10 10:29:00'),
+(31, 31, 31, 2, 4, 'This is a dummy reply content 31', '2025-01-10 10:30:00', '2025-01-10 10:30:00'),
+(32, 32, 32, 7, 1, 'This is a dummy reply content 32', '2025-01-10 10:31:00', '2025-01-10 10:31:00'),
+(33, 33, 33, 3, 5, 'This is a dummy reply content 33', '2025-01-10 10:32:00', '2025-01-10 10:32:00'),
+(34, 34, 34, 9, 0, 'This is a dummy reply content 34', '2025-01-10 10:33:00', '2025-01-10 10:33:00'),
+(35, 35, 35, 1, 2, 'This is a dummy reply content 35', '2025-01-10 10:34:00', '2025-01-10 10:34:00'),
+(36, 36, 36, 5, 1, 'This is a dummy reply content 36', '2025-01-10 10:35:00', '2025-01-10 10:35:00'),
+(37, 37, 37, 8, 3, 'This is a dummy reply content 37', '2025-01-10 10:36:00', '2025-01-10 10:36:00'),
+(38, 38, 38, 4, 0, 'This is a dummy reply content 38', '2025-01-10 10:37:00', '2025-01-10 10:37:00'),
+(39, 39, 39, 6, 2, 'This is a dummy reply content 39', '2025-01-10 10:38:00', '2025-01-10 10:38:00'),
+(40, 40, 40, 7, 1, 'This is a dummy reply content 40', '2025-01-10 10:39:00', '2025-01-10 10:39:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `testimonials`
 --
 
@@ -1292,6 +1355,14 @@ ALTER TABLE `property_images`
   ADD KEY `property_id` (`property_id`);
 
 --
+-- Indexes for table `replies`
+--
+ALTER TABLE `replies`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `post_id` (`post_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `testimonials`
 --
 ALTER TABLE `testimonials`
@@ -1379,6 +1450,12 @@ ALTER TABLE `property_images`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
+-- AUTO_INCREMENT for table `replies`
+--
+ALTER TABLE `replies`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
 -- AUTO_INCREMENT for table `testimonials`
 --
 ALTER TABLE `testimonials`
@@ -1411,6 +1488,13 @@ ALTER TABLE `forums`
 --
 ALTER TABLE `property_images`
   ADD CONSTRAINT `property_images_ibfk_1` FOREIGN KEY (`property_id`) REFERENCES `properties` (`id`);
+
+--
+-- Constraints for table `replies`
+--
+ALTER TABLE `replies`
+  ADD CONSTRAINT `replies_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
+  ADD CONSTRAINT `replies_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `clients` (`id`);
 
 --
 -- Constraints for table `testimonials`
