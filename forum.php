@@ -2,7 +2,7 @@
 <?php require_once 'include/config.inc.php' ?>
 <?php require_once 'include/db.inc.php' ?>
 <?php require_once 'include/class_autoloader.inc.php';?>
-<?php $_SESSION['logged_as_admin']  = 1 ?>
+
 
 <?php
 require_once 'include/phpFlashMessages/src/FlashMessages.php'; 
