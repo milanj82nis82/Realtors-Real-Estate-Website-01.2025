@@ -1,81 +1,112 @@
-<?php require_once 'include/config.inc.php' ?>
-<?php require_once 'include/db.inc.php' ?>
-<?php require_once 'include/class_autoloader.inc.php';?>
+<?php
+require_once '../include/config.inc.php';
+require_once '../include/db.inc.php';
+require_once 'include/class_autoloader.inc.php';
 
+try {
+
+    $admin = new Admin();
+if( $admin-> checkIsUserAdmin()){
+    header('Location:dashboard.php');
+    exit();
+}
+
+
+
+} catch ( PDOException $e ){
+    echo $e -> getMessage();
+}
+
+?>
 <!doctype html>
-<html lang="en">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
 
-  <head>
-  <?php require_once 'partials/__head.inc.php' ?>
-<!-- Facebook meta tags -->
+<head>
+   <?php require_once 'partials/__head.inc.php' ?>
+</head>
 
-  <meta property="og:type" content="business.business">
-<meta property="og:title" content="Real Estate">
-<meta property="og:url" content="http://localhost/real-estate/">
-<meta property="og:image" content="http://localhost/real-estate/images/hero_1.jpg">
-<meta property="business:contact_data:street_address" content="Branka Miljkovića 8">
-<meta property="business:contact_data:locality" content="Niš">
-<meta property="business:contact_data:region" content="Nišavski okrug">
-<meta property="business:contact_data:country_name" content="Serbia">
+<body>
 
 
+<div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-logo">
+                    <a href="">
+                        <img class="align-content" src="images/logo.png" alt="">
+                    </a>
+                </div>
+                <div class="login-form">
+<?php
+
+
+try {
+
+
+    if( isset($_POST['adminLogin'])){
+
+$email = $_POST['email'];
+$password = $_POST['password'];
+$admin = new Admin();
+$admin -> adminlogin(  $email , $password );
+
+
+    }// adminRegister
+
+
+} catch ( PDOException $e ){
+    echo $e -> getMessage();
+}
 
 
 
+?>
 
 
-  </head>
-
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-
-    
-    <div class="site-wrap" id="home-section">
-
-      <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-          <div class="site-mobile-menu-close mt-3">
-            <span class="icon-close2 js-menu-toggle"></span>
-          </div>
+                    <form action="" method="POST" >
+                       
+                        <div class="form-group">
+                                <label>Email address</label>
+                                <input type="email" class="form-control" placeholder="Email" name="email">
+                        </div>                            
+                        
+                        <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control" placeholder="Password" name="password">
+                        </div>
+                        
+                                    
+                                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30" name="adminLogin">Login</button>
+                                    <div class="social-login-content">
+                                        <div class="social-button">
+                                            <button type="button" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Register with facebook</button>
+                                            <button type="button" class="btn social twitter btn-flat btn-addon mt-2"><i class="ti-twitter"></i>Register with twitter</button>
+                                        </div>
+                                    </div>
+                                    <div class="register-link m-t-15 text-center">
+                                        <p>Already have account ? <a href="admin-register.php"> Sign up</a></p>
+                                    </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="site-mobile-menu-body"></div>
-      </div>
-
-
-
-<?php require_once 'partials/__header.inc.php' ?>
-
-  <?php  require_once 'partials/__cover_image_top.inc.php'?>
-    
-
-<?php  require_once 'partials/__advanced_search.inc.php' ?>
-<?php  require_once 'partials/__about_us.inc.php'?>
-
-<?php require_once 'partials/__latest_properties.inc.php' ?>
-<?php require_once 'partials/__agents.inc.php'  ?>
-<?php require_once 'partials/__testemonials.inc.php' ?> 
-
-<?php require_once 'partials/__blog_posts_home.inc.php' ?>
-
-<?php require_once 'partials/__footer.inc.php' ?>
     </div>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery-migrate-3.0.0.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/bootstrap-datepicker.min.js"></script>
-    <script src="js/aos.js"></script>
 
-    <script src="js/main.js"></script>
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
 
-  </body>
+
+
+
+
+</body>
 
 </html>
-
